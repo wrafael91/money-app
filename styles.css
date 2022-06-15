@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root{
+    --img-fondo: url("img/monedas.jpg");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background-image: var(--img-fondo);
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    width: 800px;
+    background: #fff;
+    padding: 20px;
+    margin: 70px auto;
+    border-radius: 50px;
+}
+
+.col_1 {
+    width: 400px;
+}
+
+.container h2 {
+    text-align: center;
+}
+
+input {
+    width: 350px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 5px;
+}
+
+.form {
+    display: flex;
+}
+
+.col_2 {
+    width: 400px;
+}
+
+.titulo_listado {
+    display: block;
+    text-align: center;
+}
+

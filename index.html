@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bolsillo App</title>
+</head>
+<body>
+    <section class="container">
+        <h2 action="" class="form_title">Bolsillo App</h2>
+        <form action="" class="form">
+            <div class="col_1">
+                <input type="text" class="input_gasto" placeholder="Nombre del gasto">
+                <input type="text" class="input_cantidad" placeholder="Cantidad del gasto $">
+                <input type="submit" value="enviar" class="form_submit">
+            </div>
+            <div class="col_2">
+                <h3 class="titulo_listado">Listado</h3>
+                <div id="gastos">
+                    <ul class="listado_gastos"></ul>
+                </div>
+                <div class="presupuesto" id="presupuesto">
+                    <div class="presupuesto_sumario">
+                        <p>Presupuesto: $ <span id="total"></span></p>
+                    </div>
+                    <div class="presupuesto_restante">
+                        <p>Restante: $ <span id="restante"></span></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>
