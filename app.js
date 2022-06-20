@@ -17,6 +17,10 @@ class Presupuesto {
         this.restante = Number(presupuesto);
         this.gastos = [];
     }
+    nuevoGasto(gasto){
+        this.gastos = [...this.gastos, gasto];
+        console.log(this.gastos);
+    }
 }
 
 class UI {
@@ -24,6 +28,34 @@ class UI {
         const {presupuesto, restante} = cantidad;
         document.querySelector('#total').textContent = presupuesto;
         document.querySelector('#restante').textContent = restante;
+    }
+
+    imprimirAlerta(mensaje, tipo){
+        const divMensaje = document.createElement('div');
+        if(tipo === 'error'){
+            divMensaje.style.cssText = `
+            background-color: red; 
+            color: white; 
+            width: 280px;
+            margin: auto;
+            text-align: center;
+            `;
+        } else {
+            divMensaje.style.cssText = `
+            background-color: green; 
+            color: white; 
+            width: 280px;
+            margin: auto;
+            text-align: center;
+            `;
+        }
+
+        divMensaje.textContent = mensaje;
+        document.querySelector('.container').insertBefore(divMensaje, formulario);
+
+        setTimeout(() => {
+            divMensaje.remove();
+        }, 3000)
     }
 }
 
@@ -51,10 +83,20 @@ function agregarGasto(e){
     e.preventDefault();
 
     const inputGasto = document.querySelector('#input_gasto').value;
-    const inputCantidad = document.querySelector('#input_cantidad').value;
+    const inputCantidad = Number(document.querySelector('#input_cantidad').value);
 
     if(inputGasto === '' || inputCantidad === ''){
-        console.log('Ambos campos son obligatorios');
+        ui.imprimirAlerta('Ambos campos son obligatorios','error');
+        return;
+    } else if(inputCantidad <= 0 || isNaN(inputCantidad)){
+        ui.imprimirAlerta('Cantidad no válida','error');
+        return;
+    } else {
+        ui.imprimirAlerta('Agregando gasto');
     }
-
+    // Generar un objeto con el nuevo gasto
+    const gasto = {inputGasto, inputCantidad, id: Date.now()};
+    presupuesto.nuevoGasto(gasto);//Añade nuevo gasto
+    //Reinicia formulario
+    formulario.reset();
 }
